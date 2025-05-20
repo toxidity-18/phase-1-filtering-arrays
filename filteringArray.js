@@ -62,3 +62,36 @@ function redFilter(collection){
     }
   }
 }
+
+// 18|May|25
+function colorFilter(collection,color){
+  for(const user of collection){
+    if(user.favoriteColor===color){
+      console.log(user.firstName)
+    }
+  }
+}
+colorFilter(users,'Red')
+
+
+
+// 20 |May|25
+// Trying to filter out by two attributes 
+function filterByTwoAttributes(collection, color, animal){
+  for(const user of collection){
+    if(user.favoriteColor===color && user.favoriteAnimal===animal){
+      console.log(user.firstName)
+    }
+  }
+}
+filterByTwoAttributes(users,'Blue','Penguin')
+
+// 
+function filter(collection,attribute,value){
+  for(const user of collection){
+    if(user[attribute]===value){
+      console.log(user.firstName)
+    }
+  }
+}
+// nice 

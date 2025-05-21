@@ -95,3 +95,26 @@ function filter(collection,attribute,value){
   }
 }
 // nice 
+function filter(collection){
+  for (const user of collection){
+    if(likesElephants(user)){
+      console.log(user.firstName)
+    }
+  }
+}
+function likesElephants(user){
+  return user['favoriteAnimal']==='Elephant'
+}
+filter(users) // Drew
+
+function filter(collection){
+  for(const user of collection){
+    if (likePenguins(user)){
+      console.log(user.firstName)
+    }
+  }
+}
+function likePenguins(user){
+  return user['favoriteAnimal']==='Penguin'
+}
+filter(users) // Tracy, Josh, Avidor

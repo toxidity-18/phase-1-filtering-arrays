@@ -38,83 +38,20 @@ const users = [
   },
 ];
 
-// Iterate and print out everyone first name .
-function firstNamePrint(collection){
-  for (const user of collection){
-    console.log(user.firstName)
-  }
-}
-
-// print out only users whose favorite color is blue 
-function blueFilter(collection){
-  for (const user of collection){
-    if(user.favoriteColor==='Blue'){
-      console.log(user.firstName)
-    }
-  }
-}
-
-// filter out  user whose favorite color is red 
-function redFilter(collection){
-  for(const user of collection){
-    if(user.favoriteColor==='Red'){
-      console.log(user.firstName)
-    }
-  }
-}
-
-// 18|May|25
-function colorFilter(collection,color){
-  for(const user of collection){
-    if(user.favoriteColor===color){
-      console.log(user.firstName)
-    }
-  }
-}
-colorFilter(users,'Red')
-
-
-
-// 20 |May|25
-// Trying to filter out by two attributes 
-function filterByTwoAttributes(collection, color, animal){
-  for(const user of collection){
-    if(user.favoriteColor===color && user.favoriteAnimal===animal){
-      console.log(user.firstName)
-    }
-  }
-}
-filterByTwoAttributes(users,'Blue','Penguin')
-
 // 
-function filter(collection,attribute,value){
-  for(const user of collection){
-    if(user[attribute]===value){
-      console.log(user.firstName)
-    }
-  }
-}
-// nice 
-function filter(collection){
-  for (const user of collection){
-    if(likesElephants(user)){
-      console.log(user.firstName)
-    }
-  }
-}
-function likesElephants(user){
-  return user['favoriteAnimal']==='Elephant'
-}
-filter(users) // Drew
 
-function filter(collection){
+// refactoring our filter function to take a callback function
+function filter(collection,db){
   for(const user of collection){
-    if (likePenguins(user)){
+    if(db(user)){
       console.log(user.firstName)
     }
   }
 }
-function likePenguins(user){
-  return user['favoriteAnimal']==='Penguin'
-}
-filter(users) // Tracy, Josh, Avidor
+filter(users,function(user){
+  return user.favoriteColor === "Blue" && user.favoriteAnimal === "Penguin"
+})
+
+filter(users,function(user){
+  return user.favoriteColor==='Yellow'
+})
